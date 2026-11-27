@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jarvis</title>
+<link rel="icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="17" /><circle cx="32" cy="32" r="5" class="dot" /></svg>
+      </div>
+      <div>
+        <h1>Jarvis</h1>
+        <span class="badge" id="provider-badge">connecting…</span>
+      </div>
+    </div>
+
+    <button class="new-chat" id="new-chat">
+      <span>+</span> New chat
+    </button>
+
+    <div class="sessions">
+      <div class="sessions-head">Conversations</div>
+      <ul id="session-list"></ul>
+    </div>
+
+    <footer class="side-foot">
+      <div class="tool-count" id="tool-count">tools: —</div>
+      <a href="/api/health" target="_blank" rel="noreferrer">health</a>
+      <a href="/api/tools" target="_blank" rel="noreferrer">api</a>
+    </footer>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="toggle-sidebar" aria-label="Toggle sidebar">☰</button>
+      <div class="title" id="chat-title">New chat</div>
+      <div class="status" id="status-dot" title="idle"></div>
+    </header>
+
+    <section class="messages" id="messages" aria-live="polite">
+      <div class="empty" id="empty">
+        <div class="empty-logo">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="17" /><circle cx="32" cy="32" r="5" class="dot" /></svg>
+        </div>
+        <h2>Good to see you.</h2>
+        <p>Ask a question, do some math, or ask me to remember something.</p>
+        <div class="suggestions">
+          <button data-prompt="What time is it in IST right now?">What time is it in IST?</button>
+          <button data-prompt="(17*23)+sqrt(81)">Compute (17*23)+sqrt(81)</button>
+          <button data-prompt="Remember that my timezone is Asia/Kolkata">Remember my timezone</button>
+          <button data-prompt="Fetch https://example.com and summarise it">Summarise example.com</button>
+        </div>
+      </div>
+    </section>
+
+    <form class="composer" id="composer">
+      <textarea id="input" rows="1" placeholder="Message Jarvis…  (Enter to send, Shift+Enter for a newline)" autocomplete="off"></textarea>
+      <button type="submit" id="send" aria-label="Send">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20l18-8L3 4l4 8-4 8z"/></svg>
+      </button>
+      <button type="button" id="stop" class="stop hidden" aria-label="Stop">■</button>
+    </form>
+    <div class="hint" id="hint">Jarvis can make mistakes. Verify important details.</div>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
